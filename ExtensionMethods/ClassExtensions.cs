@@ -1,10 +1,10 @@
-﻿//-------------------------------------------------------------------------------------------------
-//
-// ClassExtensions.cs - Extension Methods to be used on Classes.
-//
-// Copyright (c) 2008 C# .net Extension Method Collection Contributers
-//
-//-------------------------------------------------------------------------------------------------
+﻿///-------------------------------------------------------------------------------------------------
+///
+/// ClassExtensions.cs - Extension Methods to be used on Classes.
+///
+/// Copyright (c) 2008 C# .net Extension Method Collection Contributers
+///
+///-------------------------------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
