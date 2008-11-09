@@ -40,6 +40,14 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,7 +57,7 @@
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExtensionMethod\ExtensionOverflow.csproj">
+    <ProjectReference Include="..\ExtensionMethods\ExtensionOverflow.csproj">
       <Project>{7522AA8F-3DA7-4C23-9FA9-05F71EBCFCB9}</Project>
       <Name>ExtensionOverflow</Name>
     </ProjectReference>

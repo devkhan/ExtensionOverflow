@@ -8,7 +8,7 @@
     <ProjectGuid>{7522AA8F-3DA7-4C23-9FA9-05F71EBCFCB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExtensionMethod</RootNamespace>
+    <RootNamespace>ExtensionOverflow</RootNamespace>
     <AssemblyName>ExtensionMethod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ClassExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ExtensionOverflow.snk" />
