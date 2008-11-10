@@ -2,37 +2,72 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
-namespace ExtensionMethod
+namespace ExtensionOverflow
 {
     /// <summary>
-    /// <see cref="System.String" /> extensions.
+    /// String Extentensions
     /// </summary>
     public static class StringExtensions
     {
-
-        public static string Formats(this string s, object arg0)
+		/// <summary>
+		/// Formats a string with one literal placeholder.
+		/// </summary>
+		/// <param name="text">The extension text</param>
+		/// <param name="arg0">Argument 0</param>
+		/// <returns>The formatted string</returns>
+        public static string FormatWith(this string text, object arg0)
         {
-            return string.Format(s, arg0);
-        }
-        public static string Formats(this string s, object arg0, object arg1)
-        {
-            return string.Format(s, arg0, arg1);
-        }
-        public static string Formats(this string s, object arg0, object arg1, object arg2)
-        {
-            return string.Format(s, arg0, arg1, arg2);
-        }
-        public static string Formats(this string s, params object[] args)
-        {
-            return string.Format(s, args);
+			return string.Format(CultureInfo.InvariantCulture, text, arg0);
         }
 
-        public static string Formats(this string s, IFormatProvider provider, params object[] args)
+		/// <summary>
+		/// Formats a string with two literal placeholders.
+		/// </summary>
+		/// <param name="text">The extension text</param>
+		/// <param name="arg0">Argument 0</param>
+		/// <param name="arg1">Argument 1</param>
+		/// <returns>The formatted string</returns>
+        public static string FormatWith(this string text, object arg0, object arg1)
         {
-            return string.Format(provider, s, args);
+			return string.Format(CultureInfo.InvariantCulture, text, arg0, arg1);
         }
 
+		/// <summary>
+		/// Formats a string with tree literal placeholders.
+		/// </summary>
+		/// <param name="text">The extension text</param>
+		/// <param name="arg0">Argument 0</param>
+		/// <param name="arg1">Argument 1</param>
+		/// <param name="arg2">Argument 2</param>
+		/// <returns>The formatted string</returns>
+        public static string FormatWith(this string text, object arg0, object arg1, object arg2)
+        {
+			return string.Format(CultureInfo.InvariantCulture, text, arg0, arg1, arg2);
+        }
 
+		/// <summary>
+		/// Formats a string with a list of literal placeholders.
+		/// </summary>
+		/// <param name="text">The extension text</param>
+		/// <param name="args">The argument list</param>
+		/// <returns>The formatted string</returns>
+        public static string FormatWith(this string text, params object[] args)
+        {
+			return string.Format(CultureInfo.InvariantCulture, text, args);
+        }
+
+		/// <summary>
+		/// Formats a string with a list of literal placeholders.
+		/// </summary>
+		/// <param name="text">The extension text</param>
+		/// <param name="provider">The format provider</param>
+		/// <param name="args">The argument list</param>
+		/// <returns>The formatted string</returns>
+        public static string FormatWith(this string text, IFormatProvider provider, params object[] args)
+        {
+            return string.Format(provider, text, args);
+        }
     }
 }

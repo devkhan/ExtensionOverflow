@@ -1,4 +1,12 @@
-﻿using System;
+﻿///----------------------------------------------------------------------------
+///
+/// ClassExtensionTests.cs - Extension Methods to be used on Classes.
+///
+/// Copyright (c) 2008 Extension Overflow
+///
+///----------------------------------------------------------------------------
+///
+using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +22,6 @@ namespace ExtensionOverflow.Tests
 
 		}
 	}
-	
-	/// <summary>
-	/// Summary description for UnitTest1
-	/// </summary>
 	[TestClass]
 	public class ClassExtensionTests
 	{
