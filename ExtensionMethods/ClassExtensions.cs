@@ -28,6 +28,7 @@ namespace ExtensionOverflow
 		{
 			if (obj == null) 
 				throw new ArgumentNullException(text + " not allowed to be null");
+
 		}
 	}
 }
