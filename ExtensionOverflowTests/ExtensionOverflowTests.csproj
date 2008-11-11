@@ -58,7 +58,7 @@
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExtensionMethod\ExtensionOverflow.csproj">
+    <ProjectReference Include="..\ExtensionMethods\ExtensionOverflow.csproj">
       <Project>{7522AA8F-3DA7-4C23-9FA9-05F71EBCFCB9}</Project>
       <Name>ExtensionOverflow</Name>
     </ProjectReference>

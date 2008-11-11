@@ -19,7 +19,7 @@ namespace ExtensionOverflow
 		/// <returns>The formatted string</returns>
         public static string FormatWith(this string text, object arg0)
         {
-			return string.Format(CultureInfo.InvariantCulture, text, arg0);
+			return string.Format(text, arg0);
         }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ExtensionOverflow
 		/// <returns>The formatted string</returns>
         public static string FormatWith(this string text, object arg0, object arg1)
         {
-			return string.Format(CultureInfo.InvariantCulture, text, arg0, arg1);
+			return string.Format(text, arg0, arg1);
         }
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace ExtensionOverflow
 		/// <returns>The formatted string</returns>
         public static string FormatWith(this string text, object arg0, object arg1, object arg2)
         {
-			return string.Format(CultureInfo.InvariantCulture, text, arg0, arg1, arg2);
+			return string.Format(text, arg0, arg1, arg2);
         }
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace ExtensionOverflow
 		/// <returns>The formatted string</returns>
         public static string FormatWith(this string text, params object[] args)
         {
-			return string.Format(CultureInfo.InvariantCulture, text, args);
+			return string.Format(text, args);
         }
 
 		/// <summary>
