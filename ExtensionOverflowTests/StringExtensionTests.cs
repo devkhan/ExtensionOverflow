@@ -21,7 +21,9 @@ namespace ExtensionOverflow.Tests
         /// </summary>
         public TestContext TestContext { get; set; }
 
-        [TestMethod]
+		#region FormatWith
+
+		[TestMethod]
         public void FormatWithStringOneArgument()
         {
             string s = "{0} ought to be enough for everybody.";
@@ -166,5 +168,30 @@ namespace ExtensionOverflow.Tests
 			// restore culture
 			Thread.CurrentThread.CurrentCulture = currentCulture;
 		}
-    }
+
+		#endregion
+
+		#region Serializer / Deserializer
+
+		[TestMethod]
+		public void StringSerializer()
+		{
+			DummyClass dummy = new DummyClass();
+			dummy.Name = "xyz";
+
+			string sut = dummy.XmlSerialize<DummyClass>();
+			string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Name>xyz</Name></DummyClass>";
+			Assert.AreEqual(expected, sut);
+		}
+
+		[TestMethod]
+		public void StringDeserializer()
+		{
+			string teststring = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Name>xyz</Name></DummyClass>";
+			DummyClass sut = teststring.XmlDeserialize<DummyClass>();
+			Assert.AreEqual("xyz", sut.Name);
+		}
+
+		#endregion
+	}
 }

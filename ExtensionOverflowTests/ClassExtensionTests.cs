@@ -21,6 +21,12 @@ namespace ExtensionOverflow.Tests
 		{
 
 		}
+
+		public string Name
+		{
+			get;
+			set;
+		}
 	}
 
 	[TestClass]
