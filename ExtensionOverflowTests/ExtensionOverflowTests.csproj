@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,7 +59,7 @@
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExtensionMethods\ExtensionOverflow.csproj">
+    <ProjectReference Include="..\ExtensionMethod\ExtensionOverflow.csproj">
       <Project>{7522AA8F-3DA7-4C23-9FA9-05F71EBCFCB9}</Project>
       <Name>ExtensionOverflow</Name>
     </ProjectReference>

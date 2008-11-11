@@ -22,6 +22,7 @@ namespace ExtensionOverflow.Tests
 
 		}
 	}
+
 	[TestClass]
 	public class ClassExtensionTests
 	{
@@ -55,10 +56,26 @@ namespace ExtensionOverflow.Tests
 			sut.ThrowIfArgumentIsNull("DummyClass");			
 		}
 
+		[TestMethod]
+		public void ThrowIfArgumentIsNotNullOnDummyClass()
+		{
+			DummyClass sut = new DummyClass();
+
+			sut.ThrowIfArgumentIsNull("DummyClass");
+		}
+
 		[TestMethod, ExpectedException(typeof(ArgumentNullException))]
 		public void ThrowIfArgumentIsNullOnString()
 		{
 			string sut = null;
+
+			sut.ThrowIfArgumentIsNull("string");
+		}
+
+		[TestMethod]
+		public void ThrowIfArgumentIsNotNullOnString()
+		{
+			string sut = "not null";
 
 			sut.ThrowIfArgumentIsNull("string");
 		}

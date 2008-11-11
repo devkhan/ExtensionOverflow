@@ -33,6 +33,18 @@ namespace ExtensionOverflow.Tests
                 "1-argument string.FormatWith is not formatting string properly.");
         }
 
+		[TestMethod]
+		public void FormatWithStringOneNullArgument()
+		{
+			string s = "{0} ought to be enough for everybody.";
+			string param0 = null;
+
+			string expected = " ought to be enough for everybody.";
+
+			Assert.AreEqual(expected, s.FormatWith(param0),
+				"1-argument string.FormatWith is not formatting string properly.");
+		}
+
         [TestMethod]
         public void FormatWithStringTwoArguments()
         {
@@ -45,6 +57,19 @@ namespace ExtensionOverflow.Tests
             Assert.AreEqual(expected, s.FormatWith(param0, param1),
                 "2-arguments string.FormatWith is not formatting string properly.");
         }
+
+		[TestMethod]
+		public void FormatWithStringTwoNullArguments()
+		{
+			string s = "{0} ought to be enough for {1}.";
+			string param0 = null;
+			string param1 = null;
+
+			string expected = " ought to be enough for .";
+
+			Assert.AreEqual(expected, s.FormatWith(param0, param1),
+				"2-arguments string.FormatWith is not formatting string properly.");
+		}
 
         [TestMethod]
         public void FormatWithStringThreeArguments()
@@ -59,6 +84,20 @@ namespace ExtensionOverflow.Tests
             Assert.AreEqual(expected, s.FormatWith(param0, param1, param2),
                 "3-arguments string.FormatWith is not formatting string properly.");
         }
+
+		[TestMethod]
+		public void FormatWithStringThreeNullArguments()
+		{
+			string s = "{0} ought to be {1} for {2}.";
+			string param0 = null;
+			string param1 = null;
+			string param2 = null;
+
+			string expected = " ought to be  for .";
+
+			Assert.AreEqual(expected, s.FormatWith(param0, param1, param2),
+				"3-arguments string.FormatWith is not formatting string properly.");
+		}
 
         [TestMethod]
         public void FormatWithStringMultipleArguments()
@@ -75,6 +114,21 @@ namespace ExtensionOverflow.Tests
                 "4-arguments string.FormatWith is not formatting string properly.");
         }
 
+		[TestMethod]
+		public void FormatWithStringMultipleNullArguments()
+		{
+			string s = "{0} {1} to be {2} for {3}.";
+			string param0 = null;
+			string param1 = null;
+			string param2 = null;
+			string param3 = null;
+
+			string expected = "  to be  for .";
+
+			Assert.AreEqual(expected, s.FormatWith(param0, param1, param2, param3),
+				"4-arguments string.FormatWith is not formatting string properly.");
+		}
+
         [TestMethod]
         public void FormatWithStringObeyThreadCulture()
         {
@@ -88,12 +142,29 @@ namespace ExtensionOverflow.Tests
             var currentCulture = Thread.CurrentThread.CurrentCulture;
             Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
 
-            Assert.AreEqual(expected, s.FormatWith(param0, param1),
+			Assert.AreEqual(expected, s.FormatWith(Thread.CurrentThread.CurrentCulture, param0, param1),
                 "2-arguments string.FormatWith does not obey the current thread culture.");
 
             // restore culture
             Thread.CurrentThread.CurrentCulture = currentCulture;
-
         }
+
+		[TestMethod]
+		public void FormatWithStringNullCultureInfo()
+		{
+			string s = "{0} is used as the decimal separator in French, as in {1:#,##0.00}";
+
+			var expected = " is used as the decimal separator in French, as in ";
+
+			// save current culture for later restore and switch to fr-FR culture
+			var currentCulture = Thread.CurrentThread.CurrentCulture;
+			Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
+
+			Assert.AreEqual(expected, s.FormatWith(null, null, null),
+				"2-arguments string.FormatWith does not obey the current thread culture.");
+
+			// restore culture
+			Thread.CurrentThread.CurrentCulture = currentCulture;
+		}
     }
 }
