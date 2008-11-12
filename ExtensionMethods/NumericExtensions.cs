@@ -6,9 +6,12 @@ using System.Text;
 namespace ExtensionOverflow
 {
     /// <summary>
-    /// Extensions that is general for all numeric types like int, decimal etc.
+    /// Extensions that is general for all numeric types like
+    ///     byte, sbyte, short, ushort, int, uint, float, double, decimal, long, ulong
     /// </summary>
-    class NumericExtensions
+    public class NumericExtensions
     {
+        
+        
     }
 }
