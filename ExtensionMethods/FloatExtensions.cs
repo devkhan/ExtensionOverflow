@@ -10,7 +10,7 @@ namespace ExtensionOverflow
     /// </summary>
     public static class FloatExtensions
     {
-        #region ToPercent calculations
+        #region PercentageOf calculations
         
         /// <summary>
         /// Toes the percent.
@@ -18,7 +18,7 @@ namespace ExtensionOverflow
         /// <param name="value">The value.</param>
         /// <param name="percentOf">The percent of.</param>
         /// <returns></returns>
-        public static decimal ToPercent(this float value, int percentOf)
+        public static decimal PercentageOf(this float value, int percentOf)
         {
             return (decimal)(value / percentOf * 100);
         }
@@ -28,7 +28,7 @@ namespace ExtensionOverflow
         /// <param name="value">The value.</param>
         /// <param name="percentOf">The percent of.</param>
         /// <returns></returns>
-        public static decimal ToPercent(this float value, float percentOf)
+        public static decimal PercentageOf(this float value, float percentOf)
         {
             return (decimal)(value / percentOf * 100);
         }
@@ -38,7 +38,7 @@ namespace ExtensionOverflow
         /// <param name="value">The value.</param>
         /// <param name="percentOf">The percent of.</param>
         /// <returns></returns>
-        public static decimal ToPercent(this float value, double percentOf)
+        public static decimal PercentageOf(this float value, double percentOf)
         {
             return (decimal)(value / percentOf * 100);
         }
@@ -48,7 +48,7 @@ namespace ExtensionOverflow
         /// <param name="value">The value.</param>
         /// <param name="percentOf">The percent of.</param>
         /// <returns></returns>
-        public static decimal ToPercent(this float value, long percentOf)
+        public static decimal PercentageOf(this float value, long percentOf)
         {
             return (decimal)(value / percentOf * 100);
         }

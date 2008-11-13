@@ -1,0 +1,75 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ExtensionOverflow;
+
+namespace ExtensionOverflowTests
+{
+	/// <summary>
+	/// Summary description for DecimalExtensionTests
+	/// </summary>
+	[TestClass]
+	public class DecimalExtensionTests
+	{
+		public DecimalExtensionTests()
+		{
+		}
+
+		private TestContext testContextInstance;
+
+		/// <summary>
+		///Gets or sets the test context which provides
+		///information about and functionality for the current test run.
+		///</summary>
+		public TestContext TestContext
+		{
+			get
+			{
+				return testContextInstance;
+			}
+			set
+			{
+				testContextInstance = value;
+			}
+		}
+
+		[TestMethod]
+		public void PercentageOfDecimalInt()
+		{
+			Assert.AreEqual(33.0M, 100.0M.PercentageOf((int)33));
+		}
+
+		[TestMethod]
+		public void PercentOfDecimalInt()
+		{
+			Assert.AreEqual(33.0M, 33.0M.PercentOf((int)100));			
+		}
+
+		[TestMethod]
+		public void PercentageOfDecimalDecimal()
+		{
+			Assert.AreEqual(33.3M, 100.0M.PercentageOf(33.3M));
+		}
+
+		[TestMethod]
+		public void PercentOfDecimalDecimal()
+		{
+			Assert.AreEqual(33.3M, 33.3M.PercentOf(100.0M));
+		}
+
+
+		[TestMethod]
+		public void PercentageOfDecimalLong()
+		{
+			Assert.AreEqual(200.0M, 100.0M.PercentageOf((long)200));
+		}
+
+		[TestMethod]
+		public void PercentOfDecimalLong()
+		{
+			Assert.AreEqual(200.0M, 200.0M.PercentOf((long)100));
+		}
+	}
+}

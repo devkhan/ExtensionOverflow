@@ -10,38 +10,73 @@ namespace ExtensionOverflow
     /// </summary>
     public static class DecimalExtensions
     {
-        #region ToPercent calculations
+        #region PercentageOf calculations
         
         /// <summary>
-        /// Toes the percent.
+		/// The numbers percentage
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="percentOf">The percent of.</param>
-        /// <returns></returns>
-        public static decimal ToPercent(this decimal value, int percentOf)
+		/// <param name="number">The number.</param>
+		/// <param name="percent">The percent.</param>
+        /// <returns>The result</returns>
+        public static decimal PercentageOf(this decimal number, int percent)
         {
-            return (decimal)(value / percentOf * 100);
+			return (decimal)(number * percent / 100);
         }
-        /// <summary>
-        /// Toes the percent.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="percentOf">The percent of.</param>
-        /// <returns></returns>
-        public static decimal ToPercent(this decimal value, decimal percentOf)
+
+		/// <summary>
+		/// Percentage of the number.
+		/// </summary>
+		/// <param name="percent">The percent</param>
+		/// <param name="number">The Number</param>
+		/// <returns>The result</returns>
+		public static decimal PercentOf(this decimal percent, int number)
+		{
+			return (decimal)(number * percent / 100);
+		}
+
+		/// <summary>
+		/// The numbers percentage
+		/// </summary>
+		/// <param name="number">The number.</param>
+		/// <param name="percent">The percent.</param>
+		/// <returns>The result</returns>
+        public static decimal PercentageOf(this decimal number, decimal percent)
         {
-            return (decimal)(value / percentOf * 100);
+            return (decimal)(number * percent / 100);
         }
-        /// <summary>
-        /// Toes the percent.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="percentOf">The percent of.</param>
-        /// <returns></returns>
-        public static decimal ToPercent(this decimal value, long percentOf)
+
+		/// <summary>
+		/// Percentage of the number.
+		/// </summary>
+		/// <param name="percent">The percent</param>
+		/// <param name="number">The Number</param>
+		/// <returns>The result</returns>
+		public static decimal PercentOf(this decimal percent, decimal number)
+		{
+			return (decimal)(number * percent / 100);
+		}
+
+		/// <summary>
+		/// The numbers percentage
+		/// </summary>
+		/// <param name="number">The number.</param>
+		/// <param name="percent">The percent.</param>
+		/// <returns>The result</returns>
+        public static decimal PercentageOf(this decimal number, long percent)
         {
-            return (decimal)(value / percentOf * 100);
+			return (decimal)(number * percent / 100);
         }
+
+		/// <summary>
+		/// Percentage of the number.
+		/// </summary>
+		/// <param name="percent">The percent</param>
+		/// <param name="number">The Number</param>
+		/// <returns>The result</returns>
+		public static decimal PercentOf(this decimal percent, long number)
+		{
+			return (decimal)(number * percent / 100);
+		}
 
         #endregion
     }
