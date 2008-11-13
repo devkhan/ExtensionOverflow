@@ -171,26 +171,37 @@ namespace ExtensionOverflow.Tests
 
 		#endregion
 
-		#region Serializer / Deserializer
+        #region XmlSerialize / XmlDeserialize
 
-		[TestMethod]
-		public void StringSerializer()
+        [TestMethod]
+		public void XmlSerializeString()
 		{
 			DummyClass dummy = new DummyClass();
 			dummy.Name = "xyz";
 
-			string sut = dummy.XmlSerialize<DummyClass>();
+			string actual = dummy.XmlSerialize<DummyClass>();
 			string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Name>xyz</Name></DummyClass>";
-			Assert.AreEqual(expected, sut);
+			Assert.AreEqual(expected, actual);
 		}
 
 		[TestMethod]
-		public void StringDeserializer()
+		public void XmlDeserializeString()
 		{
 			string teststring = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><Name>xyz</Name></DummyClass>";
 			DummyClass sut = teststring.XmlDeserialize<DummyClass>();
 			Assert.AreEqual("xyz", sut.Name);
 		}
+
+        [TestMethod]
+        public void XmlDeserializeShouldNotThrowException()
+        {
+            var invalidXml =
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass><invalid></markup></DummyClass>";
+
+            object result = invalidXml.XmlDeserialize<DummyClass>();
+
+            Assert.IsNull(result);
+        }
 
 		#endregion
 	}

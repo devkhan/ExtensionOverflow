@@ -29,6 +29,31 @@ namespace ExtensionOverflow.Tests
 		}
 	}
 
+    /// <summary>
+    /// Dummy class for testing purposes with circular references thrown into the mix.
+    /// </summary>
+    public class DummyCircularClass : DummyClass
+    {
+        public DummyCircularClass another;
+
+        public DummyCircularClass() : base()
+        {
+            // create 2 more childrens to link in a circle
+            var d1 = new DummyCircularClass(true);
+            var d2 = new DummyCircularClass(true);
+
+            // create circular references
+            d1.another = this;
+            this.another = d2;
+            d2.another = this;
+        }
+
+        private DummyCircularClass(bool placeholder) : base()
+        {
+            /* does nothing */
+        }
+    }
+
 	[TestClass]
 	public class ClassExtensionTests
 	{

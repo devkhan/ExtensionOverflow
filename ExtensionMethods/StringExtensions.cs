@@ -89,9 +89,10 @@ namespace ExtensionOverflow
 					xml = Encoding.UTF8.GetString(memStream.GetBuffer());
 				}
 			}
-
+            
+            // ascii 60 = '<' and ascii 62 = '>'
 			xml = xml.Substring(xml.IndexOf(Convert.ToChar(60)));
-			xml = xml.Substring(0, (xml.LastIndexOf(Convert.ToChar(62)) + 1));
+			xml = xml.Substring(0, (xml.LastIndexOf(Convert.ToChar(62)) + 1)); 
 			return xml;
 		}
 
