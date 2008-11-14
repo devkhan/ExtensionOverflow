@@ -54,30 +54,17 @@ namespace ExtensionOverflow.Tests
         }
     }
 
+    /// <summary>
+    /// Tests System.Object extension methods.
+    /// </summary>
 	[TestClass]
 	public class ClassExtensionTests
 	{
-		public ClassExtensionTests()
-		{
-		}
-
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
+        /// <summary>
+        /// Provide information about current testing context.
+        /// Required by MSTests.
+        /// </summary>
+        public TestContext TestContext { get; set; }
 
 		[TestMethod, ExpectedException(typeof(ArgumentNullException))]
 		public void ThrowIfArgumentIsNullOnDummyClass()

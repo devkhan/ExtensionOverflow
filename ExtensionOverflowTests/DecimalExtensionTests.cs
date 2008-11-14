@@ -8,32 +8,16 @@ using ExtensionOverflow;
 namespace ExtensionOverflowTests
 {
 	/// <summary>
-	/// Summary description for DecimalExtensionTests
+	/// Test System.Decimal extension methods.
 	/// </summary>
 	[TestClass]
 	public class DecimalExtensionTests
 	{
-		public DecimalExtensionTests()
-		{
-		}
-
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
+        /// <summary>
+        /// Provide information about current testing context.
+        /// Required by MSTests.
+        /// </summary>
+        public TestContext TestContext { get; set; }
 
 		[TestMethod]
 		public void PercentageOfDecimalInt()

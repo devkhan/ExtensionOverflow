@@ -10,14 +10,14 @@ using System.Globalization;
 namespace ExtensionOverflow.Tests
 {
     /// <summary>
-    /// Summary description for StringExtensionTests
+    /// Test System.String extension methods.
     /// </summary>
     [TestClass]
     public class StringExtensionTests
     {
         /// <summary>
         /// Provide information about current testing context.
-        /// Required by MSTests
+        /// Required by MSTests.
         /// </summary>
         public TestContext TestContext { get; set; }
 
@@ -151,24 +151,6 @@ namespace ExtensionOverflow.Tests
             Thread.CurrentThread.CurrentCulture = currentCulture;
         }
 
-		[TestMethod]
-		public void FormatWithStringNullCultureInfo()
-		{
-			string s = "{0} is used as the decimal separator in French, as in {1:#,##0.00}";
-
-			var expected = " is used as the decimal separator in French, as in ";
-
-			// save current culture for later restore and switch to fr-FR culture
-			var currentCulture = Thread.CurrentThread.CurrentCulture;
-			Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-
-			Assert.AreEqual(expected, s.FormatWith(null, null, null),
-				"2-arguments string.FormatWith does not obey the current thread culture.");
-
-			// restore culture
-			Thread.CurrentThread.CurrentCulture = currentCulture;
-		}
-
 		#endregion
 
         #region XmlSerialize / XmlDeserialize
@@ -198,6 +180,7 @@ namespace ExtensionOverflow.Tests
             var invalidXml =
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?><DummyClass><invalid></markup></DummyClass>";
 
+            // no exception should be thrown
             object result = invalidXml.XmlDeserialize<DummyClass>();
 
             Assert.IsNull(result);
