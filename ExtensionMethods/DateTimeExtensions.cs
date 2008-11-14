@@ -11,17 +11,15 @@ namespace ExtensionOverflow
     public static class DateTimeExtensions
     {
         #region Elapsed extension
-
         /// <summary>
-        /// Percentages the of.
+        /// Elapseds the time.
         /// </summary>
         /// <param name="datetime">The datetime.</param>
-        /// <returns></returns>
+        /// <returns>TimeSpan</returns>
         public static TimeSpan Elapsed(this DateTime datetime)
         {
             return DateTime.Now - datetime;
         }
-
         #endregion
     }
 }
