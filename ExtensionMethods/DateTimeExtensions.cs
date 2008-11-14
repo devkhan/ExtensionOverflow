@@ -17,7 +17,7 @@ namespace ExtensionOverflow
         /// </summary>
         /// <param name="datetime">The datetime.</param>
         /// <returns></returns>
-        public static DateTime Elapsed(this DateTime datetime)
+        public static TimeSpan Elapsed(this DateTime datetime)
         {
             return DateTime.Now - datetime;
         }
