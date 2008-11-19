@@ -123,5 +123,76 @@ namespace ExtensionOverflow
 
 			return newObject;
 		}
+
+        #region To X conversions
+        /// <summary>
+        /// Toes the integer.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="defaultvalue">The defaultvalue.</param>
+        /// <returns></returns>
+        public static int ToInteger(this string value, int defaultvalue)
+        {
+            return (int)ToDouble(value, 0);
+        }
+        /// <summary>
+        /// Toes the integer.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static int ToInteger(this string value)
+        {
+            return ToInteger(value, 0);
+        }
+
+        /// <summary>
+        /// Toes the double.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="defaultvalue">The defaultvalue.</param>
+        /// <returns></returns>
+        public static double ToDouble(this string value, double defaultvalue)
+        {
+            double result;
+            if (double.TryParse(value, out result))
+            {
+                return result;
+            } else return defaultvalue;
+        }
+        /// <summary>
+        /// Toes the double.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static double ToDouble(this string value)
+        {
+            return ToDouble(value, 0);
+        }
+
+        /// <summary>
+        /// Toes the date time.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="defaultvalue">The defaultvalue.</param>
+        /// <returns></returns>
+        public static DateTime? ToDateTime(this string value, DateTime? defaultvalue)
+        {
+            DateTime result;
+            if (DateTime.TryParse(value, out result))
+            {
+                return result;
+            }
+            else return defaultvalue;
+        }
+        /// <summary>
+        /// Toes the date time.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static DateTime? ToDateTime(this string value)
+        {
+            return ToDateTime(value, null);
+        }
+        #endregion
     }
 }

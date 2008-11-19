@@ -187,5 +187,50 @@ namespace ExtensionOverflow.Tests
         }
 
 		#endregion
-	}
+
+        #region Conversions
+        [TestMethod]
+        public void DoubleStringToInt()
+        {
+            Assert.AreEqual(88, (88.45).ToString().ToInteger(), "Could not convert " + (88.45).ToString() + " to 88");
+        }
+        [TestMethod]
+        public void IntStringToInt()
+        {
+            Assert.AreEqual(22, "22".ToInteger(), "Could not convert 22 to 22");
+        }
+        [TestMethod]
+        public void ABCStringToInt()
+        {
+            Assert.AreEqual(0, "ABC".ToInteger());
+        }
+
+        [TestMethod]
+        public void DoubleStringToDouble()
+        {
+            Assert.AreEqual(88.45, (88.45).ToString().ToDouble(), "Could not convert " + (88.45).ToString() + " to 88.45");
+        }
+        public void ABCStringToDouble()
+        {
+            Assert.AreEqual(0, "ABC".ToDouble());
+        }
+
+        [TestMethod]
+        public void DateTimeStringToDateTime()
+        {
+            DateTime date = new DateTime(2000,1,1,13,12,11);
+            Assert.AreEqual(date, date.ToString().ToDateTime());
+        }
+        public void DateStringToDateTime()
+        {
+            DateTime date = DateTime.Now;
+            Assert.AreEqual(date.Date, date.Date.ToString().ToDateTime());
+        }
+        public void ABCToDateTime()
+        {
+            Assert.AreEqual(null, "ABC".ToDateTime());
+        }
+        
+        #endregion
+    }
 }
