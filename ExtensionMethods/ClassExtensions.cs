@@ -14,7 +14,7 @@ using System.Text;
 namespace ExtensionOverflow
 {
 	/// <summary>
-	/// Extension Methods to be used be Classes
+	/// Extension Methods to be used by Classes
 	/// </summary>
 	public static class ClassExtensions
 	{

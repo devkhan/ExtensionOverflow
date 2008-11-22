@@ -230,7 +230,41 @@ namespace ExtensionOverflow.Tests
         {
             Assert.AreEqual(null, "ABC".ToDateTime());
         }
-        
+
+        [TestMethod]
+        public void TStringToBoolean()
+        {
+            Assert.AreEqual(true, "T".ToBoolean());
+        }
+
+        [TestMethod]
+        public void FStringToBoolean()
+        {
+            Assert.AreEqual(false, "F".ToBoolean());
+        }
+
+        [TestMethod]
+        public void tStringToBoolean()
+        {
+            Assert.AreEqual(true, "t".ToBoolean());
+        }
+        [TestMethod]
+        public void fStringToBoolean()
+        {
+            Assert.AreEqual(false, "f".ToBoolean());
+        }
+
+        [TestMethod]
+        public void TrueStringToBoolean()
+        {
+            Assert.AreEqual(true, "True".ToBoolean());
+        }
+
+        [TestMethod]
+        public void FalseStringToBoolean()
+        {
+            Assert.AreEqual(false, "False".ToBoolean());
+        }
         #endregion
     }
 }

@@ -193,6 +193,29 @@ namespace ExtensionOverflow
         {
             return ToDateTime(value, null);
         }
+
+        /// <summary>
+        /// Converts a string value to bool value, supports "T" and "F" conversions.
+        /// </summary>
+        /// <param name="value">The string value.</param>
+        /// <returns>A bool based on the string value</returns>
+        public static bool? ToBoolean(this string value)
+        {
+            if (string.Compare("T",value,true) == 0)
+            {
+                return true;
+            }
+            if (string.Compare("F", value, true) == 0)
+            {
+                return false;
+            }
+            bool result;
+            if (bool.TryParse(value, out result))
+            {
+                return result;
+            }
+            else return null;
+        }
         #endregion
     }
 }

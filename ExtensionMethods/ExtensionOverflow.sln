@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionOverflowTests", ".
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A387B5C4-1827-439E-B88A-A88AE308A592}"
 	ProjectSection(SolutionItems) = preProject
+		ExtensionOverflow2.vsmdi = ExtensionOverflow2.vsmdi
 		ExtensionOverflow3.vsmdi = ExtensionOverflow3.vsmdi
+		ExtensionOverflow4.vsmdi = ExtensionOverflow4.vsmdi
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
@@ -19,19 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Style Enforcer", "Code
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs05.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ExtensionOverflow.csproj
-		SccLocalPath1 = .
-		SccProjectUniqueName2 = ..\\ExtensionOverflowTests\\ExtensionOverflowTests.csproj
-		SccProjectName2 = ../ExtensionOverflowTests
-		SccLocalPath2 = ..\\ExtensionOverflowTests
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = ExtensionOverflow3.vsmdi
+		CategoryFile = ExtensionOverflow4.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,5 +44,16 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		CodeStyleEnforcer_Active = -1
 		CodeStyleEnforcer_RulesLocation = 0
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs05.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ExtensionOverflow.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\ExtensionOverflowTests\\ExtensionOverflowTests.csproj
+		SccProjectName2 = ../ExtensionOverflowTests
+		SccLocalPath2 = ..\\ExtensionOverflowTests
 	EndGlobalSection
 EndGlobal
