@@ -210,6 +210,8 @@ namespace ExtensionOverflow.Tests
         {
             Assert.AreEqual(88.45, (88.45).ToString().ToDouble(), "Could not convert " + (88.45).ToString() + " to 88.45");
         }
+
+        [TestMethod]
         public void ABCStringToDouble()
         {
             Assert.AreEqual(0, "ABC".ToDouble());
@@ -221,11 +223,15 @@ namespace ExtensionOverflow.Tests
             DateTime date = new DateTime(2000,1,1,13,12,11);
             Assert.AreEqual(date, date.ToString().ToDateTime());
         }
+
+        [TestMethod]
         public void DateStringToDateTime()
         {
             DateTime date = DateTime.Now;
             Assert.AreEqual(date.Date, date.Date.ToString().ToDateTime());
         }
+
+        [TestMethod]
         public void ABCToDateTime()
         {
             Assert.AreEqual(null, "ABC".ToDateTime());
@@ -248,6 +254,7 @@ namespace ExtensionOverflow.Tests
         {
             Assert.AreEqual(true, "t".ToBoolean());
         }
+
         [TestMethod]
         public void fStringToBoolean()
         {
@@ -264,6 +271,12 @@ namespace ExtensionOverflow.Tests
         public void FalseStringToBoolean()
         {
             Assert.AreEqual(false, "False".ToBoolean());
+        }
+
+        [TestMethod]
+        public void ABCToBoolean()
+        {
+            Assert.AreEqual(null, "ABC".ToBoolean());
         }
         #endregion
     }
