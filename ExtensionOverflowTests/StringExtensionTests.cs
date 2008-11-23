@@ -189,16 +189,60 @@ namespace ExtensionOverflow.Tests
 		#endregion
 
         #region Conversions
+
+        private enum DummyEnum
+        { 
+            one,
+            two,
+            three
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void EmptyStringToDummyEnum()
+        {
+            "".ToEnum<DummyClass>();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullStringToDummyEnum()
+        {
+            string nullstring = null;
+            nullstring.ToEnum<DummyClass>();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),"Type provided must be an Enum.")]
+        public void StringToNonEnumType() 
+        {
+            "dummystring".ToEnum<DummyClass>();
+        }
+
+        [TestMethod]
+        public void StringToDummyEnum()
+        {
+            Assert.AreEqual(DummyEnum.one, "one".ToEnum<DummyEnum>());
+        }
+
+        [TestMethod]
+        public void IgnoreCaseStringToDummyEnum()
+        {
+            Assert.AreEqual(DummyEnum.one, "one".ToEnum<DummyEnum>(true));
+        }
+
         [TestMethod]
         public void DoubleStringToInt()
         {
             Assert.AreEqual(88, (88.45).ToString().ToInteger(), "Could not convert " + (88.45).ToString() + " to 88");
         }
+
         [TestMethod]
         public void IntStringToInt()
         {
             Assert.AreEqual(22, "22".ToInteger(), "Could not convert 22 to 22");
         }
+        
         [TestMethod]
         public void ABCStringToInt()
         {

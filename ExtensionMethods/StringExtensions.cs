@@ -6,6 +6,7 @@ using System.Text;
 using System.Globalization;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ExtensionOverflow
 {
@@ -124,7 +125,45 @@ namespace ExtensionOverflow
 			return newObject;
 		}
 
+
+
         #region To X conversions
+
+        /// <summary>
+        /// Parses a string into an Enum
+        /// </summary>
+        /// <typeparam name="T">The type of the Enum</typeparam>
+        /// <param name="value">String value to parse</param>
+        /// <returns>The Enum corresponding to the stringExtensions</returns>
+        public static T ToEnum<T>(this string value)
+        {
+            return ToEnum<T>(value, false);
+        }
+
+        /// <summary>
+        /// Parses a string into an Enum
+        /// </summary>
+        /// <typeparam name="T">The type of the Enum</typeparam>
+        /// <param name="value">String value to parse</param>
+        /// <param name="ignorecase">Ignore the case of the string being parsed</param>
+        /// <returns>The Enum corresponding to the stringExtensions</returns>
+        public static T ToEnum<T>(this string value,bool ignorecase)
+        {
+            if (value == null)
+                throw new ArgumentNullException("Value");
+            
+            value = value.Trim();
+
+            if (value.Length == 0)
+                throw new ArgumentNullException("Must specify valid information for parsing in the string.", "value");
+
+            Type t = typeof(T);
+            if (!t.IsEnum)
+                throw new ArgumentException("Type provided must be an Enum.", "T");
+
+            return (T)Enum.Parse(t, value, ignorecase);
+        }
+        
         /// <summary>
         /// Toes the integer.
         /// </summary>
