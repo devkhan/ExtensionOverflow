@@ -256,5 +256,17 @@ namespace ExtensionOverflow
             else return null;
         }
         #endregion
+
+        #region ValueOrDefault
+        public static string GetValueOrEmpty(this string value)
+        {
+            return GetValueOrDefault(value, string.Empty);
+        }
+        public static string GetValueOrDefault(this string value, string defaultvalue)
+        {
+            if (value != null) return value;
+            return defaultvalue;
+        }
+        #endregion
     }
 }

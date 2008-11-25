@@ -323,5 +323,20 @@ namespace ExtensionOverflow.Tests
             Assert.AreEqual(null, "ABC".ToBoolean());
         }
         #endregion
+
+        #region ValueOrDefault
+        [TestMethod]
+        public void NullStringToDefault()
+        {
+            string value = null;
+            Assert.AreEqual("Test", value.GetValueOrDefault("Test"));
+        }
+        [TestMethod]
+        public void NullStringToEmpty()
+        {
+            string value = null;
+            Assert.AreEqual("", value.GetValueOrEmpty());
+        }
+        #endregion
     }
 }
