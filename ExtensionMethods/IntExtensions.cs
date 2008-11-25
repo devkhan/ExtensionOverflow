@@ -33,6 +33,11 @@ namespace ExtensionOverflow
 		{
 			return (decimal)(number * percent / 100);
 		}
+        public static decimal PercentOf(this int? percent, int number)
+        {
+            if (percent == null) return 0;
+            return PercentOf(percent.Value, number);
+        }
 
 		/// <summary>
 		/// The numbers percentage
@@ -123,5 +128,11 @@ namespace ExtensionOverflow
 		}
 
         #endregion
+
+        public static string ToString(this int? value, string defaultvalue)
+        {
+            if (value == null) return defaultvalue;
+            return value.Value.ToString();
+        }
     }
 }

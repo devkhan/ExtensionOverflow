@@ -57,7 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlExtensionTest.cs" />
     <Compile Include="DateTimeExtensionTests.cs" />
     <Compile Include="DecimalExtensionTests.cs" />
     <Compile Include="DoubleExtensionTests.cs" />
