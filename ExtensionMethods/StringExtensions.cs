@@ -268,5 +268,41 @@ namespace ExtensionOverflow
             return defaultvalue;
         }
         #endregion
+
+        /// <summary>
+        /// Converts string to a Name-Format where each first letter is Uppercase.
+        /// </summary>
+        /// <param name="value">The string value.</param>
+        /// <returns></returns>
+        public static string ToUpperLowerNameVariant(this string value)
+        {
+            char[] valuearray = value.ToLower().ToCharArray();
+            bool nextupper = true;
+            for (int i = 0; i < (valuearray.Count() -1); i++)
+            {
+                if (nextupper)
+                {
+                    valuearray[i] = char.Parse(valuearray[i].ToString().ToUpper());
+                    nextupper = false;
+                } 
+                else
+                {
+                    switch (valuearray[i])
+	                {
+                        case ' ':
+                        case '-':
+                        case '.':
+                        case ':':
+                        case '\n':
+                            nextupper = true;
+                            break;
+		                default:
+                            nextupper = false;
+                            break;
+	                }
+                }
+            }
+            return new string(valuearray);
+        }
     }
 }
