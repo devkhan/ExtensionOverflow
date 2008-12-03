@@ -71,9 +71,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this long percent, int number)
+		public static decimal PercentOf(this long position, int total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 
 		/// <summary>
@@ -82,9 +85,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this long percent, float number)
+		public static decimal PercentOf(this long position, float total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
 		/// <summary>
@@ -93,9 +99,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this long percent, double number)
+		public static decimal PercentOf(this long position, double total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
 		/// <summary>
@@ -104,9 +113,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this long percent, decimal number)
+		public static decimal PercentOf(this long position, decimal total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 
 		/// <summary>
@@ -115,9 +127,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this long percent, long number)
+		public static decimal PercentOf(this long position, long total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 	}
 }

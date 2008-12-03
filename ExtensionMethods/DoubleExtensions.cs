@@ -32,24 +32,36 @@ namespace ExtensionOverflow
 			return (decimal)(number * percent / 100);
         }
 
-		public static decimal PercentOf(this double percent, int number)
+		public static decimal PercentOf(this double position, int total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
-		public static decimal PercentOf(this double percent, float number)
+		public static decimal PercentOf(this double position, float total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
-		public static decimal PercentOf(this double percent, double number)
+		public static decimal PercentOf(this double position, double total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
-		public static decimal PercentOf(this double percent, long number)
+		public static decimal PercentOf(this double position, long total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)((decimal)position / (decimal)total * 100);
+            return result;
 		}
 
         #endregion

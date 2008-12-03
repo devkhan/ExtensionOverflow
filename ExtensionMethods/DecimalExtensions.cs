@@ -29,9 +29,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this decimal percent, int number)
+		public static decimal PercentOf(this decimal position, int total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 
 		/// <summary>
@@ -51,9 +54,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this decimal percent, decimal number)
+		public static decimal PercentOf(this decimal position, decimal total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 
 		/// <summary>
@@ -73,9 +79,12 @@ namespace ExtensionOverflow
 		/// <param name="percent">The percent</param>
 		/// <param name="number">The Number</param>
 		/// <returns>The result</returns>
-		public static decimal PercentOf(this decimal percent, long number)
+		public static decimal PercentOf(this decimal position, long total)
 		{
-			return (decimal)(number * percent / 100);
+            decimal result = 0;
+            if (position > 0 && total > 0)
+                result = (decimal)position / (decimal)total * 100;
+            return result;
 		}
 
         #endregion
