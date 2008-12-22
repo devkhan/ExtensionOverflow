@@ -130,5 +130,17 @@ namespace ExtensionOverflow
             return daysbetween;
         }
         #endregion
+
+        public static string GetValueOrDefaultToString(this DateTime? datetime, string defaultvalue)
+        {
+            if (datetime == null) return defaultvalue;
+            return datetime.Value.ToString();
+        }
+
+        public static string GetValueOrDefaultToString(this DateTime? datetime, string format, string defaultvalue)
+        {
+            if (datetime == null) return defaultvalue;
+            return datetime.Value.ToString(format);
+        }
     }
 }
