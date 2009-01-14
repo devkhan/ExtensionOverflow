@@ -12,7 +12,7 @@ namespace ExtensionOverflow
     {
 
         /// <summary>
-        /// Toes the CSV string.
+        /// Converts the Linq data to a commaseperated string including header.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
@@ -22,7 +22,7 @@ namespace ExtensionOverflow
         }
 
         /// <summary>
-        /// Toes the CSV string.
+        /// Converts the Linq data to a commaseperated string including header.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <param name="delimiter">The delimiter.</param>
