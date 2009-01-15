@@ -29,6 +29,18 @@ namespace ExtensionOverflow
         /// <returns></returns>
         public static string ToCSVString(this System.Linq.IOrderedQueryable data, string delimiter)
         {
+            return ToCSVString(data, "; ", null);
+        }
+
+        /// <summary>
+        /// Converts the Linq data to a commaseperated string including header.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <param name="nullvalue">The nullvalue.</param>
+        /// <returns></returns>
+        public static string ToCSVString(this System.Linq.IOrderedQueryable data, string delimiter, string nullvalue)
+        {
             StringBuilder csvdata = new StringBuilder();
             string replaceFrom = delimiter.Trim();
             string replaceDelimiter = ";";
@@ -70,11 +82,17 @@ namespace ExtensionOverflow
                     {
                         csvdata.Append(value.ToString().Replace("\n", " \f").Replace("_", " ").Replace(replaceFrom, replaceDelimiter) + delimiter);
                     }
-                    else csvdata.Append("null" + delimiter);
+                    else
+                    {
+                        csvdata.Append(nullvalue);
+                        csvdata.Append(delimiter);
+                    }
 			    }
                 csvdata.Append("\n");
             }
             return csvdata.ToString();
         }
+
+        
     }
 }
