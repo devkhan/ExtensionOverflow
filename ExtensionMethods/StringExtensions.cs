@@ -422,34 +422,68 @@ namespace ExtensionOverflow
         #endregion
 
         #region HTMLHelper
+
+        /// <summary>
+        /// Converts to a HTML-encoded string
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns></returns>
         public static string HtmlEncode(this string data)
         {
-            return this.HtmlEncode(data);
+            return System.Web.HttpUtility.HtmlEncode(data);
         }
 
+        /// <summary>
+        /// Converts the HTML-encoded string into a decoded string
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns></returns>
         public static string HtmlDecode(this string data)
         {
-            return this.HtmlDecode(data);
+            return System.Web.HttpUtility.HtmlDecode(data);
         }
 
+        /// <summary>
+        /// Parses a query string into a System.Collections.Specialized.NameValueCollection
+        /// using System.Text.Encoding.UTF8 encoding.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns></returns>
         public static System.Collections.Specialized.NameValueCollection ParseQueryString(this string query)
         {
-            return this.ParseQueryString(query);
+            return System.Web.HttpUtility.ParseQueryString(query);
         }
 
+        /// <summary>
+        /// Encode an Url string
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         public static string UrlEncode(this string url)
         {
-            return this.UrlEncode(url);
+            return System.Web.HttpUtility.UrlEncode(url);
         }
 
+        /// <summary>
+        /// Converts a string that has been encoded for transmission in a URL into a
+        /// decoded string.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         public static string UrlDecode(this string url)
         {
-            return this.UrlDecode(url);
+            return System.Web.HttpUtility.UrlDecode(url);
         }
 
+        /// <summary>
+        /// Encodes the path portion of a URL string for reliable HTTP transmission from
+        /// the Web server to a client.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         public static string UrlPathEncode(this string url)
         {
-            return this.UrlPathEncode(url);
+            return System.Web.HttpUtility.UrlPathEncode(url);
         }
         #endregion
     }
