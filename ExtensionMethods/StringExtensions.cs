@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Mail;
 
 namespace ExtensionOverflow
 {
@@ -413,6 +414,48 @@ namespace ExtensionOverflow
         }
         #endregion
 
+        #region Email
+        /// <summary>
+        /// Send an email using the supplied string.
+        /// </summary>
+        /// <param name="body">String that will be used i the body of the email.</param>
+        /// <param name="subject">Subject of the email.</param>
+        /// <param name="sender">The email address from which the message was sent.</param>
+        /// <param name="recipient">The receiver of the email.</param> 
+        /// <param name="server">The server from which the email will be sent.</param>  
+        /// <returns>A boolean value indicating the success of the email send.</returns>
+        public static bool Email(this string body, string subject, string sender, string recipient, string server)
+        {
+            try
+            {
+                // To
+                MailMessage mailMsg = new MailMessage();
+                mailMsg.To.Add(recipient);
+
+                // From
+                MailAddress mailAddress = new MailAddress(sender);
+                mailMsg.From = mailAddress;
+
+                // Subject and Body
+                mailMsg.Subject = subject;
+                mailMsg.Body = body;
+
+                // Init SmtpClient and send
+                SmtpClient smtpClient = new SmtpClient(server);
+                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
+                smtpClient.Credentials = credentials;
+
+                smtpClient.Send(mailMsg);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
         #region Truncate
         /// <summary>
         /// Truncates the string to a specified length and replace the truncated to a ...
@@ -527,5 +570,7 @@ namespace ExtensionOverflow
             return !String.IsNullOrEmpty(input);
         }
         #endregion
+
+        
     }
 }
