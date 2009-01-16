@@ -486,5 +486,27 @@ namespace ExtensionOverflow
             return System.Web.HttpUtility.UrlPathEncode(url);
         }
         #endregion
+
+        #region Format
+        /// <summary>
+        /// Replaces the format item in a specified System.String with the text equivalent
+        /// of the value of a specified System.Object instance.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <param name="arg">The arg.</param>
+        /// <param name="additionalArgs">The additional args.</param>
+        /// <returns></returns>
+        public static string Format(this string format, object arg, params object[] additionalArgs)
+        {
+            if (additionalArgs == null || additionalArgs.Length == 0)
+            {
+                return string.Format(format, arg);
+            }
+            else
+            {
+                return string.Format(format, new object[] { arg }.Concat(additionalArgs).ToArray());
+            }
+        }
+        #endregion
     }
 }
