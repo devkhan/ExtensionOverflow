@@ -328,10 +328,10 @@ namespace ExtensionOverflow
                 throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
             }
 
-            CspParameters cspp = new CspParameters();
+            System.Security.Cryptography.CspParameters cspp = new System.Security.Cryptography.CspParameters();
             cspp.KeyContainerName = key;
 
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cspp);
+            System.Security.Cryptography.RSACryptoServiceProvider rsa = new System.Security.Cryptography.RSACryptoServiceProvider(cspp);
             rsa.PersistKeyInCsp = true;
 
             byte[] bytes = rsa.Encrypt(System.Text.UTF8Encoding.UTF8.GetBytes(stringToEncrypt), true);
@@ -342,7 +342,6 @@ namespace ExtensionOverflow
         /// <summary>
         /// Decryptes a string using the supplied key. Decoding is done using RSA encryption.
         /// </summary>
-        /// <param name="stringToDecrypt">String that must be decrypted.</param>
         /// <param name="key">Decryptionkey.</param>
         /// <returns>The decrypted string or null if decryption failed.</returns>
         /// <exception cref="ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
@@ -362,10 +361,10 @@ namespace ExtensionOverflow
 
             try
             {
-                CspParameters cspp = new CspParameters();
+                System.Security.Cryptography.CspParameters cspp = new System.Security.Cryptography.CspParameters();
                 cspp.KeyContainerName = key;
 
-                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cspp);
+                System.Security.Cryptography.RSACryptoServiceProvider rsa = new System.Security.Cryptography.RSACryptoServiceProvider(cspp);
                 rsa.PersistKeyInCsp = true;
 
                 string[] decryptArray = stringToDecrypt.Split(new string[] { "-" }, StringSplitOptions.None);
@@ -387,10 +386,30 @@ namespace ExtensionOverflow
         #endregion
 
         #region IsValidUrl
+        /// <summary>
+        /// Determines whether it is a valid URL.
+        /// </summary>
+        /// <returns>
+        /// 	<c>true</c> if [is valid URL] [the specified text]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool IsValidUrl(this string text)
         {
-            Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?");
+            System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?");
             return rx.IsMatch(text);
+        }
+        #endregion
+
+        #region IsValidEmailAddress
+        /// <summary>
+        /// Determines whether it is a valid email address
+        /// </summary>
+        /// <returns>
+        /// 	<c>true</c> if [is valid email address] [the specified s]; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsValidEmailAddress(this string email)
+        {
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(email);
         }
         #endregion
 
@@ -398,7 +417,6 @@ namespace ExtensionOverflow
         /// <summary>
         /// Truncates the string to a specified length and replace the truncated to a ...
         /// </summary>
-        /// <param name="text">string that will be truncated</param>
         /// <param name="maxLength">total length of characters to maintain before the truncate happens</param>
         /// <returns>truncated string</returns>
         public static string Truncate(this string text, int maxLength)
@@ -436,8 +454,6 @@ namespace ExtensionOverflow
         /// <summary>
         /// Converts the HTML-encoded string into a decoded string
         /// </summary>
-        /// <param name="data">The data.</param>
-        /// <returns></returns>
         public static string HtmlDecode(this string data)
         {
             return System.Web.HttpUtility.HtmlDecode(data);
@@ -447,8 +463,6 @@ namespace ExtensionOverflow
         /// Parses a query string into a System.Collections.Specialized.NameValueCollection
         /// using System.Text.Encoding.UTF8 encoding.
         /// </summary>
-        /// <param name="query">The query.</param>
-        /// <returns></returns>
         public static System.Collections.Specialized.NameValueCollection ParseQueryString(this string query)
         {
             return System.Web.HttpUtility.ParseQueryString(query);
@@ -457,8 +471,6 @@ namespace ExtensionOverflow
         /// <summary>
         /// Encode an Url string
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
         public static string UrlEncode(this string url)
         {
             return System.Web.HttpUtility.UrlEncode(url);
@@ -468,8 +480,6 @@ namespace ExtensionOverflow
         /// Converts a string that has been encoded for transmission in a URL into a
         /// decoded string.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
         public static string UrlDecode(this string url)
         {
             return System.Web.HttpUtility.UrlDecode(url);
@@ -479,8 +489,6 @@ namespace ExtensionOverflow
         /// Encodes the path portion of a URL string for reliable HTTP transmission from
         /// the Web server to a client.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
         public static string UrlPathEncode(this string url)
         {
             return System.Web.HttpUtility.UrlPathEncode(url);
@@ -492,10 +500,8 @@ namespace ExtensionOverflow
         /// Replaces the format item in a specified System.String with the text equivalent
         /// of the value of a specified System.Object instance.
         /// </summary>
-        /// <param name="format">The format.</param>
         /// <param name="arg">The arg.</param>
         /// <param name="additionalArgs">The additional args.</param>
-        /// <returns></returns>
         public static string Format(this string format, object arg, params object[] additionalArgs)
         {
             if (additionalArgs == null || additionalArgs.Length == 0)
@@ -513,7 +519,6 @@ namespace ExtensionOverflow
         /// <summary>
         /// Determines whether [is not null or empty] [the specified input].
         /// </summary>
-        /// <param name="input">The input.</param>
         /// <returns>
         /// 	<c>true</c> if [is not null or empty] [the specified input]; otherwise, <c>false</c>.
         /// </returns>
