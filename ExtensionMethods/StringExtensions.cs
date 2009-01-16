@@ -420,5 +420,37 @@ namespace ExtensionOverflow
             return truncatedString;
         }
         #endregion
+
+        #region HTMLHelper
+        public static string HtmlEncode(this string data)
+        {
+            return this.HtmlEncode(data);
+        }
+
+        public static string HtmlDecode(this string data)
+        {
+            return this.HtmlDecode(data);
+        }
+
+        public static System.Collections.Specialized.NameValueCollection ParseQueryString(this string query)
+        {
+            return this.ParseQueryString(query);
+        }
+
+        public static string UrlEncode(this string url)
+        {
+            return this.UrlEncode(url);
+        }
+
+        public static string UrlDecode(this string url)
+        {
+            return this.UrlDecode(url);
+        }
+
+        public static string UrlPathEncode(this string url)
+        {
+            return this.UrlPathEncode(url);
+        }
+        #endregion
     }
 }
