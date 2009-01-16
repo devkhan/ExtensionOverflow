@@ -508,5 +508,19 @@ namespace ExtensionOverflow
             }
         }
         #endregion
+
+        #region IsNullOrEmpty
+        /// <summary>
+        /// Determines whether [is not null or empty] [the specified input].
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>
+        /// 	<c>true</c> if [is not null or empty] [the specified input]; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNotNullOrEmpty(this string input)
+        {
+            return !String.IsNullOrEmpty(input);
+        }
+        #endregion
     }
 }
