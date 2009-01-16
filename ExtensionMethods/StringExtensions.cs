@@ -15,7 +15,8 @@ namespace ExtensionOverflow
     /// </summary>
     public static class StringExtensions
     {
-		/// <summary>
+        #region FormatWith
+        /// <summary>
 		/// Formats a string with one literal placeholder.
 		/// </summary>
 		/// <param name="text">The extension text</param>
@@ -73,8 +74,10 @@ namespace ExtensionOverflow
         {
             return string.Format(provider, text, args);
         }
+        #endregion
 
-		/// <summary>Serialises an object of type T in to an xml string</summary>
+        #region XmlSerialize XmlDeserialize
+        /// <summary>Serialises an object of type T in to an xml string</summary>
 		/// <typeparam name="T">Any class type</typeparam>
 		/// <param name="objectToSerialise">Object to serialise</param>
 		/// <returns>A string that represents Xml, empty oterwise</returns>
@@ -123,12 +126,10 @@ namespace ExtensionOverflow
 			}
 
 			return newObject;
-		}
-
-
+        }
+        #endregion
 
         #region To X conversions
-
         /// <summary>
         /// Parses a string into an Enum
         /// </summary>
@@ -269,6 +270,7 @@ namespace ExtensionOverflow
         }
         #endregion
 
+        #region ToUpperLowerNameVariant
         /// <summary>
         /// Converts string to a Name-Format where each first letter is Uppercase.
         /// </summary>
@@ -304,5 +306,84 @@ namespace ExtensionOverflow
             }
             return new string(valuearray);
         }
+        #endregion
+
+        #region Encrypt Decrypt
+        /// <summary>
+        /// Encryptes a string using the supplied key. Encoding is done using RSA encryption.
+        /// </summary>
+        /// <param name="stringToEncrypt">String that must be encrypted.</param>
+        /// <param name="key">Encryptionkey.</param>
+        /// <returns>A string representing a byte array separated by a minus sign.</returns>
+        /// <exception cref="ArgumentException">Occurs when stringToEncrypt or key is null or empty.</exception>
+        public static string Encrypt(this string stringToEncrypt, string key)
+        {
+            if (string.IsNullOrEmpty(stringToEncrypt))
+            {
+                throw new ArgumentException("An empty string value cannot be encrypted.");
+            }
+
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
+            }
+
+            CspParameters cspp = new CspParameters();
+            cspp.KeyContainerName = key;
+
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cspp);
+            rsa.PersistKeyInCsp = true;
+
+            byte[] bytes = rsa.Encrypt(System.Text.UTF8Encoding.UTF8.GetBytes(stringToEncrypt), true);
+
+            return BitConverter.ToString(bytes);
+        }
+
+        /// <summary>
+        /// Decryptes a string using the supplied key. Decoding is done using RSA encryption.
+        /// </summary>
+        /// <param name="stringToDecrypt">String that must be decrypted.</param>
+        /// <param name="key">Decryptionkey.</param>
+        /// <returns>The decrypted string or null if decryption failed.</returns>
+        /// <exception cref="ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
+        public static string Decrypt(this string stringToDecrypt, string key)
+        {
+            string result = null;
+
+            if (string.IsNullOrEmpty(stringToDecrypt))
+            {
+                throw new ArgumentException("An empty string value cannot be encrypted.");
+            }
+
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Cannot decrypt using an empty key. Please supply a decryption key.");
+            }
+
+            try
+            {
+                CspParameters cspp = new CspParameters();
+                cspp.KeyContainerName = key;
+
+                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cspp);
+                rsa.PersistKeyInCsp = true;
+
+                string[] decryptArray = stringToDecrypt.Split(new string[] { "-" }, StringSplitOptions.None);
+                byte[] decryptByteArray = Array.ConvertAll<string, byte>(decryptArray, (s => Convert.ToByte(byte.Parse(s, System.Globalization.NumberStyles.HexNumber))));
+
+
+                byte[] bytes = rsa.Decrypt(decryptByteArray, true);
+
+                result = System.Text.UTF8Encoding.UTF8.GetString(bytes);
+
+            }
+            finally
+            {
+                // no need for further processing
+            }
+
+            return result;
+        }
+        #endregion
     }
 }
