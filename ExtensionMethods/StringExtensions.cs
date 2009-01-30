@@ -449,7 +449,7 @@ namespace ExtensionOverflow
             }
             catch (Exception ex)
             {
-                return false;
+                throw new Exception("Could not send mail from: " + sender + " to: " + recipient + " thru smtp server: " + server + "\n\n" + ex.Message, ex);
             }
 
             return true;
