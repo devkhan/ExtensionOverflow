@@ -174,7 +174,7 @@ namespace ExtensionOverflow
         /// <returns></returns>
         public static int ToInteger(this string value, int defaultvalue)
         {
-            return (int)ToDouble(value, 0);
+            return (int)ToDouble(value, defaultvalue);
         }
         /// <summary>
         /// Toes the integer.
@@ -184,6 +184,27 @@ namespace ExtensionOverflow
         public static int ToInteger(this string value)
         {
             return ToInteger(value, 0);
+        }
+
+        /// <summary>
+        /// Toes the U long.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static ulong ToULong(this string value)
+        {
+            ulong def = 0;
+            return value.ToULong(def);
+        }
+        /// <summary>
+        /// Toes the U long.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="defaultvalue">The defaultvalue.</param>
+        /// <returns></returns>
+        public static ulong ToULong(this string value, ulong defaultvalue)
+        {
+            return (ulong)ToDouble(value, defaultvalue);
         }
 
         /// <summary>
