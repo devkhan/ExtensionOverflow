@@ -19,13 +19,10 @@ namespace ExtensionOverflow
         /// <returns></returns>
         public static string FormValue(this TextBox textbox)
         {
-            string value = textbox.Page.Request.Form[textbox.UniqueID].ToString();
-            if (value == null)
-            {
-                return textbox.Text;
-            }
-            else return value;
+            string value = textbox.Page.Request.Form[textbox.UniqueID];
+            return value ?? textbox.Text;
         }
+
         #endregion
     }
 }
