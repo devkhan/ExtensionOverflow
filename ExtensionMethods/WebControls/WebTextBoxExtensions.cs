@@ -19,10 +19,22 @@ namespace ExtensionOverflow
         /// <returns></returns>
         public static string FormValue(this TextBox textbox)
         {
-            string value = textbox.Page.Request.Form[textbox.UniqueID];
-            return value ?? textbox.Text;
+            return FormValue(textbox, string.Empty);
         }
 
+        public static string FormValue(this TextBox textbox, string defaultvalue)
+        {
+            string value = null;
+            if (textbox.UniqueID != null) value = textbox.Page.Request.Form[textbox.UniqueID];
+            return value ?? (!string.IsNullOrEmpty(textbox.Text) ? textbox.Text : defaultvalue);
+        }
+
+        //public static int FormIntValue(this TextBox textbox, int defaultvalue)
+        //{
+        //    string value = null;
+        //    if (textbox.UniqueID != null) value = textbox.Page.Request.Form[textbox.UniqueID];
+        //    return value ?? ((textbox.Text.ToInteger() == 0) ? defaultvalue: textbox.Text.ToInteger());
+        //}
         #endregion
     }
 }
