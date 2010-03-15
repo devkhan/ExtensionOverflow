@@ -300,6 +300,7 @@ namespace ExtensionOverflow
         /// <returns></returns>
         public static string ToUpperLowerNameVariant(this string value)
         {
+            if (string.IsNullOrEmpty(value)) return "";
             char[] valuearray = value.ToLower().ToCharArray();
             bool nextupper = true;
             for (int i = 0; i < (valuearray.Count() -1); i++)
